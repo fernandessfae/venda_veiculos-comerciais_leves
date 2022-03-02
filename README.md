@@ -2,44 +2,44 @@
 
 - Introdução
 - Análise geral
-  - 1. Histograma
-  - 2. Medidas de tendência central
-        - 2.1 Média
-        - 2.2 Mediana
-        - 2.3 Moda
-  - 3. Medidas de dispersão
-        - 3.1 Variância
-        - 3.2 Desvio padrão
-  - 4. Medidas de posição
-        - 4.1 Quartis
-  - 5. Outliers
-  - 6. Teste de normalidade
-        - 6.1 Histograma com linha de distribuição
-        - 6.2 Teste Shapiro-Wilk
+  1. Histograma
+  2. Medidas de tendência central
+      - 2.1 Média
+      - 2.2 Mediana
+      - 2.3 Moda
+  3. Medidas de dispersão
+      - 3.1 Variância
+      - 3.2 Desvio padrão
+  4. Medidas de posição
+      - 4.1 Quartis
+  5. Outliers
+  6. Teste de normalidade
+      - 6.1 Histograma com linha de distribuição
+      - 6.2 Teste Shapiro-Wilk
 - Série temporal
-  - 1. Definição
-  - 2. Média móvel
-  - 3. Decomposição da série temporal
-  - 4. Modelagem do dados
-        - 4.1 Normalidade e transformação
-          - 4.1.1 Normalidade
-          - 4.1.2 Transformação
-        - 4.2 Estacionariedade e diferenciação
-          - 4.2.1 Estacionariedade
-          - 4.2.2 Diferenciação
-        - 4.3 Autocorrelação
+  1. Definição
+  2. Média móvel
+  3. Decomposição da série temporal
+  4. Modelagem do dados
+      - 4.1 Normalidade e transformação
+        - 4.1.1 Normalidade
+        - 4.1.2 Transformação
+      - 4.2 Estacionariedade e diferenciação
+        - 4.2.1 Estacionariedade
+        - 4.2.2 Diferenciação
+      - 4.3 Autocorrelação
           - 4.3.1 Função de autocorrelação (ACF)
           - 4.3.2 Função de autocorrelação parcial (PACF)
-  - 5. Modelos de série temporal
+  5. Modelos de série temporal
         - 5.1 ARIMA (AutoRegression Integrated Moving Average)
           - 5.1.1 Criação e comparação entre modelos ARIMA
-  - 6. Previsão série temporal
+  6. Previsão série temporal
         - 6.1 ARIMA
 - Referências Bibliográficas
 
 ## Introdução
 
-<div style="text-align: justify">O setor automobilístico é um importante setor que indica a situação econômica do país. Segundo o site Bonevau, <blockquote>historicamente, a indústria automobilística possui um expressivo peso na economia e no desenvolvimento do país. Seja pela sua capacidade de criar demanda para uma grande cadeia de indústrias paralelas ou para gerar empregos, as montadoras sempre foram um segmento bastante valorizado no Brasil e no mundo.</blockquote> Dada essa importância, iremos analisar os dados da vendas de comerciais leves, também conhecidos como pequenos caminhões de carga, também conhecidos com furgões ou vans, que, segundo a definição do site icaminhões, <blockquote>os comerciais leves são os veículos de carga com peso acima de 3.000 quilos a, no máximo, 7 toneladas. A presença dos furgões nos grandes centros urbanos do Brasil vem tornando-se cada vez maior por conta das crescentes restrições à circulação dos caminhões.</blockquote> Os dados das vendas foram coletados pela Federação Nacional da Distribuição de Veículos Automotores e mantidos/atualizados pelo banco central do Brasil (BCB), cujo link pode ser acessado por <a href="https://dados.gov.br/dataset/7385-vendas-de-veiculos-pelas-concessionarias-comerciais-leves#"> aqui </a>, os dados de venda são referentes ao meses dos anos de 1990 até 2021, no momento que foi feita a requisição dos dados.</div><br/> 
+<div style="text-align: justify">O setor automobilístico é um importante setor que indica a situação econômica do país. Segundo o site Bonevau, <blockquote>historicamente, a indústria automobilística possui um expressivo peso na economia e no desenvolvimento do país. Seja pela sua capacidade de criar demanda para uma grande cadeia de indústrias paralelas ou para gerar empregos, as montadoras sempre foram um segmento bastante valorizado no Brasil e no mundo.</blockquote> Dada essa importância, iremos analisar os dados da vendas de comerciais leves, também conhecidos como pequenos caminhões de carga, também conhecidos com furgões ou vans, que, segundo a definição do site icaminhões, <blockquote>os comerciais leves são os veículos de carga com peso acima de 3.000 quilos a, no máximo, 7 toneladas. A presença dos furgões nos grandes centros urbanos do Brasil vem tornando-se cada vez maior por conta das crescentes restrições à circulação dos caminhões.</blockquote> Os dados das vendas foram coletados pela Federação Nacional da Distribuição de Veículos Automotores e mantidos/atualizados pelo banco central do Brasil (BCB), cujo link pode ser acessado por <a href="https://dados.gov.br/dataset/7385-vendas-de-veiculos-pelas-concessionarias-comerciais-leves#"> aqui</a>, os dados de venda são referentes ao meses dos anos de 1990 até 2021, no momento que foi feita a requisição dos dados.</div><br/> 
 
 ## Análise geral
 
@@ -49,10 +49,10 @@
 
 <div style="text-align: justify">O histograma é um gráfico de barras que mostra uma distribuição de frequências de determinado evento, ou seja, mostra a quantidade de vezes que ocorreu aquele evento. No nosso exemplo, mostraremos a quantidade absoluta de comerciais leves vendidos em todos os meses durante o período, observe a imagem abaixo:</div><br/>
 
-![Histograma venda mensal](histograma_venda_mensal.png "Histograma venda mensal comerciais leves")
+![Histograma venda mensal](imagens/histograma_venda_mensal.png "Histograma venda mensal comerciais leves")
 <div align="center">(Fonte: Arquivo pessoal, 2022)</div><br/>
 
-<div style="text-align: justify">De acordo com o histograma do conjunto de dados analisados, percebe-se que é ele é um de “cauda à direita”, isto é, grande maioria das quantidades de vendas mensais estão a direita do histograma, especificamente  maior quantidade de vendas entre 15000 a 28000 unidades, aproximadamente.</div><br/>
+<div style="text-align: justify">De acordo com o histograma do conjunto de dados analisados, percebe-se que é ele é um de “cauda à direita”, isto é, grande maioria das quantidades de vendas mensais estão a direita do histograma, especificamente  maior quantidade de vendas entre 15.000 a 28.000 unidades, aproximadamente.</div><br/>
 
 ### 2) Medidas de tendência central<br/><br/>
 
@@ -73,16 +73,16 @@
 
 ### 3) Medidas de dispersão<br/><br/>
 
-<div style="text-align: justify">Segundo a definição da professora Rosimar Gouveia, <blockquote>Medidas de dispersão são parâmetros estatísticos usados para determinar o grau de variabilidade dos dados de um conjunto de valores.
-A utilização desses parâmetros tornam a análise de uma amostra mais confiável, visto que as variáveis de tendência central (média, mediana, moda) muitas vezes encondem a homogeneidade ou não dos dados</blockquote.> As medidas de dispersão mais utilizadas são <b>variância</b> e <b>desvio padrão</b>.</div><br/>
+<div style="text-align: justify"> <blockquote>Medidas de dispersão são parâmetros estatísticos usados para determinar o grau de variabilidade dos dados de um conjunto de valores.
+A utilização desses parâmetros tornam a análise de uma amostra mais confiável, visto que as variáveis de tendência central (média, mediana, moda) muitas vezes encondem a homogeneidade ou não dos dados</blockquote.> As medidas de dispersão mais utilizadas são <b>variância</b> e <b>desvio padrão</b>. GOUVEIA, Rosimar.</blockquote></div><br/>
 
 #### 3.1) Variância<br/><br/>
 
-<div style="text-align: justify"><blockquote>A variância é determinada pela média dos quadrados das diferenças entre cada uma das observações e a média aritmética da amostra,</blockquote> segundo Rosimar Gouveia. No conjunto de dados analisado, a variância foi de <b>271.004.287,7</b> unidades² no período, ou seja, a quantidade das vendas mensais do conjunto são bastante heterogêneas.</div><br/>
+<div style="text-align: justify"><blockquote>A variância é determinada pela média dos quadrados das diferenças entre cada uma das observações e a média aritmética da amostra. GOUVEIA, Rosimar.</blockquote> No conjunto de dados analisado, a variância foi de <b>271.004.287,7</b> unidades² no período, ou seja, a quantidade das vendas mensais do conjunto são bastante heterogêneas.</div><br/>
 
 #### 3.2) Desvio Padrão<br/><br/>
 
-<div style="text-align: justify"><blockquote>O desvio padrão é definido como a raiz quadrada da variância. Desta forma, a unidade de medida do desvio padrão será a mesma da unidade de medida dos dados, o que não acontece com a variância,</blockquote> segundo Rosimar Gouveia. No conjunto de dados analisado, o desvio padrão de comerciais vendidos durante o período é de <b>16.462</b> unidades, mostrando uma grande dispersão dos dados.</div><br/>
+<div style="text-align: justify"><blockquote>O desvio padrão é definido como a raiz quadrada da variância. Desta forma, a unidade de medida do desvio padrão será a mesma da unidade de medida dos dados, o que não acontece com a variância. GOUVEIA, Rosimar.</blockquote> No conjunto de dados analisado, o desvio padrão de comerciais vendidos durante o período é de <b>16.462</b> unidades, mostrando uma grande dispersão dos dados.</div><br/>
 
 ### 4) Medidas de posição<br/><br/>
 
@@ -92,7 +92,7 @@ A utilização desses parâmetros tornam a análise de uma amostra mais confiáv
 
 <div style="text-align: justify">Os quartis tem a função de dividir os dados, de ordem crescente ou descrecente, de forma a separar em quarto partes iguais. A forma mais fácil de visualizar os quartis são através dos gráficos de caixa, também conhecido como “boxplot”. Abaixo vamos uma descrição detalhada do conjunto com o boxplot.</div><br/>
 
-![Boxplot venda mensal periodo](boxplot_venda_mensal_periodo.png "Boxplot venda mensal comerciais leves")
+![Boxplot venda mensal periodo](imagens/boxplot_venda_mensal_periodo.png "Boxplot venda mensal comerciais leves")
 <div align="center">(Fonte: Arquivo pessoal, 2022)</div><br/>
 
 count    384.0
@@ -111,7 +111,7 @@ O que da para inferir nesse gráfico de caixa é que:<br/> 1) Amplitude dos dado
 
 <div style="text-align: justify">Outliers são valores que estão muito acima ou muito abaixo dos valores máximos e mínimos do boxplot. No conjunto de dados analisados, as vendas de alguns meses do ano no período foram muito acima do máximo do gráfico boxplot. Abaixo, está um gráfico de barra com todos os outliers.</div><br/>
 
-![Gráfico barra outliers](grafico_barra_outliers.png "Gráfico barra outliers comerciais leves")
+![Gráfico barra outliers](imagens/grafico_barra_outliers.png "Gráfico barra outliers comerciais leves")
 <div align="center">(Fonte: Arquivo pessoal, 2022)</div><br/>
 
 Olhando o gráfico vemos que grande partes das vendas acima do valor de venda máximo estão entre os anos de 2010, 2011, 2012 e 2013, sendo os meses de dezembro, dezembro, agosto e dezembro as maiores vendas mensais de cada ano, respectivamente. A partir dai já podem surgir uma pergunta  bastante pertinente sobre esses outliers:
@@ -120,7 +120,7 @@ Olhando o gráfico vemos que grande partes das vendas acima do valor de venda m�
 
 Antes de responder essa pergunta, será apresentado outro gráfico do tipo boxplot para as vendas dos meses que foram identificados como outliers, juntamente com as medidas de posição de cada ano, exceto o ano de 2010 que tem apenas um único mês.
 
-![Boxplot outliers venda anual](boxplot_outliers_anual.png "Boxplot outliers venda anual comerciais leves")
+![Boxplot outliers venda anual](imagens/boxplot_outliers_anual.png "Boxplot outliers venda anual comerciais leves")
 <div align="center">(Fonte: Arquivo pessoal, 2022)</div><br/>
      
 data | count | mean | std | min | 25% | 50% <br/>| 75% | max<br/>                                                      
@@ -137,7 +137,7 @@ Agora respondendo a pergunta feita anteriormente:
 
 <div style="text-align: justify">Como falamos sobre o desempenho dos meses dos anos detectados como outliers, também é interessante ver o desempenho de vendas anual durante o periodo:</div><br/>
 
-![Boxplot venda anual periodo](boxplot_venda_anual_periodo.png "Boxplot venda anual comerciais leves")
+![Boxplot venda anual periodo](imagens/boxplot_venda_anual_periodo.png "Boxplot venda anual comerciais leves")
 <div align="center">(Fonte: Arquivo pessoal, 2022)</div><br/>
 
 data count mean std min 25% 50% 75%<br/> max<br/>                                                                        
@@ -183,12 +183,12 @@ O que ficou evidente nesse gráfico foram que de 2007 a 2013 houve um cresciment
 
 #### 6.1) Histograma com linha de distribuição
 
-<div style="text-align: justify">Esse método já foi visto no item [1](), já que, além de servir para a visualização de distribuição de frequências, também serve para visualização da distribuição dos dados. Abaixo veremos a distribuição dos dados.</div><br/>
+<div style="text-align: justify">Esse método já foi visto no item 1, já que, além de servir para a visualização de distribuição de frequências, também serve para visualização da distribuição dos dados. Abaixo veremos a distribuição dos dados.</div><br/>
 
-![Histograma distribuição venda mensal](histograma_distribuicao_venda_mensal.png "Histograma distribuição venda mensal")
+![Histograma distribuição venda mensal](imagens/histograma_distribuicao_venda_mensal.png "Histograma distribuição venda mensal")
 <div align="center">(Fonte: Arquivo pessoal, 2022)</div><br/>
 
-<div style="text-align: justify">A diferença desse gráfico para o [histograma](1) é que ele vem com uma linha de distribuição que auxilia para uma melhor definição do tipo da distribuição. E olhando essa linha no gráfico, vemos que a distribuição é assimétrica positiva, ou à direita. Isso significa que a [média](2.1) é maior do que a [moda](2.3).</div><br/>
+<div style="text-align: justify">A diferença desse gráfico para o item 1 é que ele vem com uma linha de distribuição que auxilia para uma melhor definição do tipo da distribuição. E olhando essa linha no gráfico, vemos que a distribuição é assimétrica positiva, ou à direita. Isso significa que a média (item 2.1) é maior do que a moda (item 2.3).</div><br/>
 
 #### 6.2) Teste de Shapiro-Wilk<br/><br/>
 
@@ -208,7 +208,7 @@ Estatística do teste: 0.8769716024398804
 
 <div style="text-align: justify">Como foi observado nos itens anteriores, percebemos que ao longo do tempo foi possível ver valores de vendas de meses ao longo de um período, e isso é chamado de série temporal, onde ao longo de um determinado tempo, desde segundo até anos, observamos valores durante o seu intervalo. E é a partir dessas séries temporais que existem a possibilidade de fazer previsões para tempos futuros, e essas previsões podem servir para várias área como varejo, gestão, planejamento, meteorologia, dentre outros, servindo como um referencial para determinado tipo de situação que deseja-se resolver. Abaixo veremos o gráfico da série temporal</div><br/>
 
-![Gráfico série temporal comerciais leves](serie_temporal_comerciais_leves.png "Série temporal venda mensal comerciais leves")
+![Gráfico série temporal comerciais leves](imagens/serie_temporal_comerciais_leves.png "Série temporal venda mensal comerciais leves")
 <div align="center">(Fonte: Arquivo pessoal, 2022)</div><br/>
 
 <div style="text-align: justify">No gráfico, percebe-se que de 2007 a 2013, houve o melhor desempenho na venda de comerciais leves vendidos, enquanto que no final do ano de 2019 e até meados de 2020 houve o pior desempenho de venda.</div><br/>
@@ -217,7 +217,7 @@ Estatística do teste: 0.8769716024398804
 
 <div style="text-align: justify">A média móvel é uma média que se move conforme o tempo de referência. Ela é utilizada para suavização de séries temporais, isto refere-se, principalmente, a séries que possuem um ato grau de oscilação dos picos durante o período, por exemplo a média móvel semanal do COVID-19, e determinação de tendência, esta que pode ser ascendente (subida), descendente (descida) e sem tendência. Sobre a tendência, falaremos mais dela quando trataremos de decomposição de série temporal. Porém, vale ressaltar que ela <b>não</b> serve para fazer previsão da série. Abaixo veremos a média móvel dos valores mensais da série temporal.</div><br/>
 
-![Gráfico média móvel comerciais leves](media_movel_comerciais_leves.png "Gráfico média móvel vs série temporal comerciais leves")
+![Gráfico média móvel comerciais leves](imagens/media_movel_comerciais_leves.png "Gráfico média móvel vs série temporal comerciais leves")
 <div align="center">(Fonte: Arquivo pessoal, 2022)</div><br/> 
 
 <div style="text-align: justify">Visualizando a média móvel (linha vermelha), não é possível perceber o tipo de tendência que essa série apresenta para os próximos meses.</div><br/>
@@ -243,7 +243,7 @@ Existem 2 tipos de modelos de decomposição da série temporal:</div>
 
 <div style="text-align: justify">A diferença entre eles é que na decomposição multiplicativa normalmente fornece os melhores resultados quando existe uma relação entre a sazonalidade e os dados, isto é, quando aumenta a sazonalidade com o aumento dos valores dos dados ou quando diminui a sazonalidade com a diminuição dos valores dos dados. Caso não haja a relação entre a sazonalidade e dos dados, o método aditivo é o mais recomendado. Como visto no gráfico da série temporal, os valores aumentam ou diminui e não depende exclusivamente da sazonalidade, então foi optado por um modelo aditivo. Abaixo veremos o gráfico da decomposição da série temporal com o modelo aditivo.</div><br/>
 
-![Gráfico decomposição série temporal](decomposicao_serie_temporal.png "Decomposição da série temporal")
+![Gráfico decomposição série temporal](imagens/decomposicao_serie_temporal.png "Decomposição da série temporal")
 <div align="center">(Fonte: Arquivo pessoal, 2022)</div><br/>
 
 <div style="text-align: justify">E aqui está a decomposição da série, de cima para baixo, com o gráficos da série original, tendência, sazonalidade e resíduo, respectivamente. Como podem ver no gráfico, a tendência não está muito bem definida, mas a sazonalidade está muito bem definida, algo bem relevantes para a modelagem dos dados para o modelo da série temporal. Outro ponto para destacar é que foi feita a decomposição da série temporal dos meses de 1990 até 2020, isso acontece porque deixaremos os dados do ano de 2021 para futura métrica de avaliação do modelo, que será vista mais adiante.</div><br/>
@@ -257,12 +257,12 @@ Existem 2 tipos de modelos de decomposição da série temporal:</div>
 #### 4.1.1) Normalidade<br/><br/>
 
 <div style="text-align: justify">Normalidade tem o objetivo de transformar a distribuição da série temporal em uma distribuição aproximadamente normal (gaussiana), cujo objetivo é fazer com que os modelos fiquem mais eficientes na hora de fazer a previsão dos valores.<br/>
-Esse teste de [normalidade](6) já foi visto anteriormente, com o teste de [Shapiro-Wilk](6.2), juntamente com o histograma da série temporal. A diferença agora é a presença de mais uma nova ferramenta para a visualização da normalidade: gráfico QQ-plot.</div><br/>
+Esse teste de normalidade (item 6) já foi visto anteriormente, com o teste de Shapiro-Wilk (item 6.2), juntamente com o histograma da série temporal. A diferença agora é a presença de mais uma nova ferramenta para a visualização da normalidade: gráfico QQ-plot.</div><br/>
 
-![Gráfico normalidade QQplot](qqplot_serie_temporal.png "Gráfico normalidade QQplot")
+![Gráfico normalidade QQplot](imagens/qqplot_serie_temporal.png "Gráfico normalidade QQplot")
 <div align="center">(Fonte: Arquivo pessoal, 2022)</div><br/>
 
-<div style="text-align: justify">No gráfico QQplot, para uma distribuição ser normal ou aproximadamente normal, os dados, em sua maioria, tem que estar acima da linha vermelha. Nos dados da série temporal mostram claramente que os dados **não** estão normalmente distribuídos.
+<div style="text-align: justify">No gráfico QQplot, para uma distribuição ser normal ou aproximadamente normal, os dados, em sua maioria, tem que estar acima da linha vermelha. Nos dados da série temporal mostram claramente que os dados <b>não</b> estão normalmente distribuídos.
 Percebe-se que tanto o gráfico QQplot com o teste de Shapiro-Wilk mostram que os dados não estão normalizados, sendo necessário uma transformação.</div><br/>
 
 #### 4.1.2) Transformação<br/><br/>
@@ -281,7 +281,7 @@ Caso a série temporal não esteja normalizada, que é o caso da nossa série te
 
 <div style="text-align: justify">Como a transformação <b>log</b> é a opção mais utilizada, não seria diferente aqui, e ele também foi escolhido para os dados da série temporal, optando pelo logaritmo na base 10 por questão pessoal, somente. Agora faremos o teste de normalidade nos dados transformados com QQplot e teste estatístico de Shapiro-Wilk.</div><br/>
 
- ![Gráfico normalidade QQplot transformada](qqplot_transformada_serie_temporal.png "Gráfico normalidade QQplot série transformada")
+ ![Gráfico normalidade QQplot transformada](imagens/qqplot_transformada_serie_temporal.png "Gráfico normalidade QQplot série transformada")
 <div align="center">(Fonte: Arquivo pessoal, 2022)</div><br/>
 
 <div style="text-align: justify">Observando o gráfico QQplot após a transformação, é nítida a diferença da normalidade. Agora é necessário ver o teste estatístico de Shapiro-Wilk para confirmar, ou não, a normalidade dos dados.</div><br/>
@@ -301,7 +301,7 @@ Após atestada a normalidade dos dados da série temporal, agora é necessário 
 
 <div style="text-align: justify">Após a normalização dos dados, é necessário verificar se a série temporal está estacionária. Série temporal estacionária é aquela que se desenvolvem aleatoriamente no tempo através de uma <b>média constante</b>, e esse é mais um requisito importante para fazer um modelo adequado para previsão.
 Séries não estacionárias mudam de comportamento por inclinação ou mudança de nível.<br/> Por exemplo, séries temporais com sazonalidade não são estacionárias, porque a média não é constante ao longo do tempo.
-Quando ocorrem mudanças repentinas na série temporal tem-se séries temporais não estacionárias <b>explosivas</b>(Por exemplo, crescimento de bactérias).<br/>
+Quando ocorrem mudanças repentinas na série temporal tem-se séries temporais não estacionárias <b>explosivas</b> (Por exemplo, crescimento de bactérias).<br/>
 Existem vários testes estatísticos para determinar a estacionariedade da série temporal, como KPSS, Dickey-Fuller, Phillips-Perron, dentre outros.
 E para confirmar a estacionariedade, optou-se por utilizar o teste estatístico como o KPSS, por exemplo. Abaixo veremos os resultados do teste para a série temporal após transformação:</div><br/>
 
@@ -352,7 +352,7 @@ Alguns testes para avaliação da autocorrelação são o <b>ACF</b> e <b>PACF</
 <div style="text-align: justify">A função de autocorrelação (ACF) analisa os dados (lags) vizinhos, na sequência, seja anterior ou superior ao dado atual.
 Abaixo veremos o gráfico ACF da série temporal com 60 lags:</div><br/>
 
-![Gráfico ACF](autocorrelacao.png "Gráfico de autocorrelação com 60 lags")
+![Gráfico ACF](imagens/autocorrelacao.png "Gráfico de autocorrelação com 60 lags")
 <div align="center">(Fonte: Arquivo pessoal, 2022)</div><br/>
 
 <div style="text-align: justify">Como podemos ver, grande parte dos lags estão dentro do intervalo de confiança (azul), algo muito positivo para a modelagem dos dados.</div><br/>
@@ -361,7 +361,7 @@ Abaixo veremos o gráfico ACF da série temporal com 60 lags:</div><br/>
 A função de autocorrelação parcial (PACF) analisa os dados (lags) de forma (aleatória).
 Abaixo veremos o gráfico PACF da série temporal com 60 lags:
 
- ![Gráfico PACF](autocorrelacao_parcial.png "Gráfico de autocorrelação parcial com 60 lags")
+ ![Gráfico PACF](imagens/autocorrelacao_parcial.png "Gráfico de autocorrelação parcial com 60 lags")
 <div align="center">(Fonte: Arquivo pessoal, 2022)</div><br/>
 
 <div style="text-align: justify">Como no gráfico de correlação, a grande maioria dos lags estão dentro do intervalo de confiança. O que também significa um ótimo sinal para o modelo.</div><br/>
@@ -393,30 +393,30 @@ Aqui vale explicar um detalhe na geração dos modelos pelo auto ARIMA. O auto A
 Após escolhido o melhor modelo para a série, fazer uma avaliação do modelo. Então é necessário verificar os resíduos do modelo ARIMA criado e avaliar a sua diferenciação, distribuição normal e suas autocorrelações, tanto o ACF quanto o PACF.
 Primeiro, veremos o gráfico dos resíduos com o gráfico dele logo abaixo.</div><br/>
 
-![Resíduos ARIMA](residuos_modelo_arima.png "Gráfico resíduos do modelo ARIMA")
+![Resíduos ARIMA](imagens/residuos_modelo_arima.png "Gráfico resíduos do modelo ARIMA")
 <div align="center">(Fonte: Arquivo pessoal, 2022)</div><br/>
 
 <div style="text-align: justify">Percebe-se que os resíduos tem uma média e variância constante, o que significa que o modelo ARIMA encaixou bem com os dados e os resíduos são estacionários.
 Agora, veremos o gráfico da normalidade do resíduo do modelo ARIMA abaixo.</div><br/>
 
-![Gráfico disribuição residuos ARIMA](distribuicao_normal_residuos.png "Gráfico da distribuição normal dos resíduos do modelo ARIMA")
+![Gráfico disribuição residuos ARIMA](imagens/distribuicao_normal_residuos.png "Gráfico da distribuição normal dos resíduos do modelo ARIMA")
 <div align="center">(Fonte: Arquivo pessoal, 2022)</div><br/>
 
 <div style="text-align: justify">No gráfico, percebe-se que os resíduos estão perto de ser normalmente distribuidos, com alguns pontos fora da reta. Para confirmar, basta ver o teste de Shapiro-Wilk para ter mais uma ferramenta para verificação estatística da distribuição dos dados.</div><br/>
 
 Teste de Shapiro-Wilk
-Critério: Nível de significancia de 0.05 ou 5% (mais utilizado)
+**Critério: Nível de significancia de 0.05 ou 5% (mais utilizado)**
 Se p > 0.05 (distribuição normal)
-Estatística do teste: 0.9461087584495544
-Valor p: 2.1602641897544572e-10
+**Estatística do teste: 0.9461087584495544**
+**Valor p: 2.1602641897544572e-10**
 
 <div style="text-align: justify">Apesar do teste avaliar que os dados do resíduo do modelo ARIMA não estão distribuidos, iremos considerar o que o gráfico mostrou anteriormente.
 Agora iremos ver o ACF e PACF dos resíduos do modelo ARIMA:</div><br/>
 
-![Gráfico ACF residuos](autocorrelacao_residuos.png "Gráfico de autocorrelação dos residuos com 60 lags")
+![Gráfico ACF residuos](imagens/autocorrelacao_residuos.png "Gráfico de autocorrelação dos residuos com 60 lags")
 <div align="center">(Fonte: Arquivo pessoal, 2022)</div><br/>
 
-![Gráfico PACF](autocorrelacao_parcial.png "Gráfico de autocorrelação parcial dos residuos com 60 lags")
+![Gráfico PACF](imagens/autocorrelacao_parcial.png "Gráfico de autocorrelação parcial dos residuos com 60 lags")
 <div align="center">(Fonte: Arquivo pessoal, 2022)</div><br/>
 
 <div style="text-align: justify">Tanto o ACF quanto PACF mostram que a grande maioria dos lags estão dentro do intervalo de confiança, mostrando que não correlação entre eles. E mostra que o modelo ARIMA está bom para esse tipo de dados.</div><br/>
@@ -427,10 +427,10 @@ Agora iremos ver o ACF e PACF dos resíduos do modelo ARIMA:</div><br/>
 
 #### 6.1) ARIMA<br/><br/>
 
-![Gráfico série + previsão 2022](serie_temporal_previsao.png "Gráfico da série temporal mais previsão para 2022")
+![Gráfico série + previsão 2022](imagens/serie_temporal_previsao.png "Gráfico da série temporal mais previsão para 2022")
 <div align="center">(Fonte: Arquivo pessoal, 2022)</div><br/>
 
-![Gráfico previsão 2022](previsao_vendas_2022.png "Gráfico com a previsão de venda de comerciais leves para o ano de 2022.")
+![Gráfico previsão 2022](imagens/previsao_vendas_2022.png "Gráfico com a previsão de venda de comerciais leves para o ano de 2022.")
 <div align="center">(Fonte: Arquivo pessoal, 2022)</div><br/>
 
 ## Referências Bibliográficas
