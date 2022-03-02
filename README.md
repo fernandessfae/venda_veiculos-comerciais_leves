@@ -4,37 +4,37 @@
 - Análise geral
   1. Histograma
   2. Medidas de tendência central
-      - 2.1 Média
-      - 2.2 Mediana
-      - 2.3 Moda
+      - 2.1. Média
+      - 2.2. Mediana
+      - 2.3. Moda
   3. Medidas de dispersão
-      - 3.1 Variância
-      - 3.2 Desvio padrão
+      - 3.1. Variância
+      - 3.2. Desvio padrão
   4. Medidas de posição
-      - 4.1 Quartis
+      - 4.1. Quartis
   5. Outliers
   6. Teste de normalidade
-      - 6.1 Histograma com linha de distribuição
-      - 6.2 Teste Shapiro-Wilk
+      - 6.1. Histograma com linha de distribuição
+      - 6.2. Teste Shapiro-Wilk
 - Série temporal
   1. Definição
   2. Média móvel
   3. Decomposição da série temporal
   4. Modelagem do dados
-      - 4.1 Normalidade e transformação
-        - 4.1.1 Normalidade
-        - 4.1.2 Transformação
-      - 4.2 Estacionariedade e diferenciação
-        - 4.2.1 Estacionariedade
-        - 4.2.2 Diferenciação
-      - 4.3 Autocorrelação
-          - 4.3.1 Função de autocorrelação (ACF)
-          - 4.3.2 Função de autocorrelação parcial (PACF)
+      - 4.1. Normalidade e transformação
+        - 4.1.1. Normalidade
+        - 4.1.2. Transformação
+      - 4.2. Estacionariedade e diferenciação
+        - 4.2.1. Estacionariedade
+        - 4.2.2. Diferenciação
+      - 4.3. Autocorrelação
+          - 4.3.1. Função de autocorrelação (ACF)
+          - 4.3.2. Função de autocorrelação parcial (PACF)
   5. Modelos de série temporal
-        - 5.1 ARIMA (AutoRegression Integrated Moving Average)
-          - 5.1.1 Criação e comparação entre modelos ARIMA
+        - 5.1. ARIMA (AutoRegression Integrated Moving Average)
+          - 5.1.1. Criação e comparação entre modelos ARIMA
   6. Previsão série temporal
-        - 6.1 ARIMA
+        - 6.1. ARIMA
 - Referências Bibliográficas
 
 ## Introdução
@@ -49,7 +49,7 @@
 
 <div style="text-align: justify">O histograma é um gráfico de barras que mostra uma distribuição de frequências de determinado evento, ou seja, mostra a quantidade de vezes que ocorreu aquele evento. No nosso exemplo, mostraremos a quantidade absoluta de comerciais leves vendidos em todos os meses durante o período, observe a imagem abaixo:</div><br/>
 
-![Histograma venda mensal](imagens/histograma_venda_mensal.png "Histograma venda mensal comerciais leves")
+<p align="center"> <img src="imagens/histograma_venda_mensal.png"/></p>
 <div align="center">(Fonte: Arquivo pessoal, 2022)</div><br/>
 
 <div style="text-align: justify">De acordo com o histograma do conjunto de dados analisados, percebe-se que é ele é um de “cauda à direita”, isto é, grande maioria das quantidades de vendas mensais estão a direita do histograma, especificamente  maior quantidade de vendas entre 15.000 a 28.000 unidades, aproximadamente.</div><br/>
@@ -95,14 +95,14 @@ A utilização desses parâmetros tornam a análise de uma amostra mais confiáv
 ![Boxplot venda mensal periodo](imagens/boxplot_venda_mensal_periodo.png "Boxplot venda mensal comerciais leves")
 <div align="center">(Fonte: Arquivo pessoal, 2022)</div><br/>
 
-count    384.0
-mean     28988.0
-std      16462.0
-min      5531.0
-25%      17830.0
-50%      24031.0
-75%      35933.0
-max      79746.0
+count    384.0<br/>
+mean     28988.0<br/>
+std      16462.0<br/>
+min      5531.0<br/>
+25%      17830.0<br/>
+50%      24031.0<br/>
+75%      35933.0<br/>
+max      79746.0<br/>
 
 <div style="text-align: justify">O gráfico do boxplot funciona da seguinte maneira, olhando da esquerda para direita, a primeira linha vertical é o valor mínimo (min), a primeira linha do retângulo é o primeiro quartil (Q1 – 25%), a segunda linha destacada dentro do retângulo é o segundo quartil (Q2 – 50%), é a mediana dos dados, a segunda linha que fecha o retângulo é o terceiro quartil (Q3 – 75%), a linha vertical final é o valor máximo dos dados, e as bolinhas coloridas em vermelho são os outliers, ou seja, valores discrepantes do conjunto de dados.
 O que da para inferir nesse gráfico de caixa é que:<br/> 1) Amplitude dos dados de venda, que é a diferença entre o valor máximo e valor mínimo, é muito grande, ocasionando uma maior variação dos dados, confirmando também através do desvio padrão.<br/> 2) O retângulo contém 50% de vendas de todo o período, juntamente com a sua mediana. Como esta está mais próxima do primeiro quartil, é correto afirmar que os dados estão são positivamente assimétricos, ou seja, as vendas estão com um comportamento de uma distribuição assimétrica positiva. Saber o tipo de distribuição dos dados é muito importante mais a frente na hora de fazer possíveis inferências estatísticas.<br/> 3) Existem muitos outliers presente no boxplot, sendo necessário averiguar o porquê desse tipo de comportamento deles.</div><br/>
@@ -120,13 +120,13 @@ Olhando o gráfico vemos que grande partes das vendas acima do valor de venda m�
 
 Antes de responder essa pergunta, será apresentado outro gráfico do tipo boxplot para as vendas dos meses que foram identificados como outliers, juntamente com as medidas de posição de cada ano, exceto o ano de 2010 que tem apenas um único mês.
 
-![Boxplot outliers venda anual](imagens/boxplot_outliers_anual.png "Boxplot outliers venda anual comerciais leves")
+<p align="center"> <img src="imagens/boxplot_outliers_anual.png"/></p>
 <div align="center">(Fonte: Arquivo pessoal, 2022)</div><br/>
      
-data | count | mean | std | min | 25% | 50% <br/>| 75% | max<br/>                                                      
+data | count | mean | std | min | 25% | 50% | 75% | max<br/>                                                      
 2011| 8.0 | 68871.25 | 4629.76 | 64826.0 65165.0 | 67406.0 | 71428.25 | 78089.0<br/>
 2012 | 9.0 | 69903.67 | 6586.35 | 63926.0 | 64524.0 | 66073.0 | 77127.00 | 79746.0<br/>
-2013 | 10.0 | 71081.30 | 3815.98 | 65155.0  | 68999.0 | 70939.5 | 73527.75 | 77572.0
+2013 | 10.0 | 71081.30 | 3815.98 | 65155.0  | 68999.0 | 70939.5 | 73527.75 | 77572.0<br/>
 
 <div style="text-align: justify">Visualizando o gráfico e os dados de medida de posição anual, percebe-se que houver uma maior dispersão de vendas no ano de 2012, enquanto que no ano de 2013 teve uma menor dispersão de dados (diferença entre os valor máximo e mínimo), mas com uma mediana maior do que os outros anos, confirmando uma maior venda naquele ano. Vale ressaltar que está sendo analisado <b>SOMENTE</b> os outliers dos meses entre o período de 1990 a 2021.</div><br/>
 
@@ -185,7 +185,7 @@ O que ficou evidente nesse gráfico foram que de 2007 a 2013 houve um cresciment
 
 <div style="text-align: justify">Esse método já foi visto no item 1, já que, além de servir para a visualização de distribuição de frequências, também serve para visualização da distribuição dos dados. Abaixo veremos a distribuição dos dados.</div><br/>
 
-![Histograma distribuição venda mensal](imagens/histograma_distribuicao_venda_mensal.png "Histograma distribuição venda mensal")
+<p align="center"><img src="imagens/histograma_distribuicao_venda_mensal.png"/></p>
 <div align="center">(Fonte: Arquivo pessoal, 2022)</div><br/>
 
 <div style="text-align: justify">A diferença desse gráfico para o item 1 é que ele vem com uma linha de distribuição que auxilia para uma melhor definição do tipo da distribuição. E olhando essa linha no gráfico, vemos que a distribuição é assimétrica positiva, ou à direita. Isso significa que a média (item 2.1) é maior do que a moda (item 2.3).</div><br/>
@@ -194,11 +194,11 @@ O que ficou evidente nesse gráfico foram que de 2007 a 2013 houve um cresciment
 
 <div style="text-align: justify">É um teste estatístico para aferir a distribuição normal de um conjunto de dados/registros. A sua única limitação é que só consegue fazer esse teste o conjunto com uma quantidade menor ou igual a 5000 dados/registros. Abaixo veremos o teste para as vendas de comerciais leves ao longo do período de 1990 a 2021.</div><br/>
 
-Teste de Shapiro-Wilk
-**Critério: Nível de significancia de 0.05 ou 5% (mais utilizado)**
-**Se p > 0.05 (distribuição normal)**
-Estatística do teste: 0.8769716024398804
-**Valor p: 6.209090978297413e-17**
+Teste de Shapiro-Wilk<br/>
+**Critério: Nível de significancia de 0.05 ou 5% (mais utilizado)**<br/>
+**Se p > 0.05 (distribuição normal)**<br/>
+Estatística do teste: 0.8769716024398804<br/>
+**Valor p: 6.209090978297413e-17**<br/>
 
 <div style="text-align: justify">O teste corrobora aquilo que foi visto no histograma (6.1), mostrando uma distribuição não-normal, ou seja, uma distribuição assimétrica positiva.</div>
 
@@ -259,7 +259,7 @@ Existem 2 tipos de modelos de decomposição da série temporal:</div>
 <div style="text-align: justify">Normalidade tem o objetivo de transformar a distribuição da série temporal em uma distribuição aproximadamente normal (gaussiana), cujo objetivo é fazer com que os modelos fiquem mais eficientes na hora de fazer a previsão dos valores.<br/>
 Esse teste de normalidade (item 6) já foi visto anteriormente, com o teste de Shapiro-Wilk (item 6.2), juntamente com o histograma da série temporal. A diferença agora é a presença de mais uma nova ferramenta para a visualização da normalidade: gráfico QQ-plot.</div><br/>
 
-![Gráfico normalidade QQplot](imagens/qqplot_serie_temporal.png "Gráfico normalidade QQplot")
+<p align="center"><img src="imagens/qqplot_serie_temporal.png"/></p>
 <div align="center">(Fonte: Arquivo pessoal, 2022)</div><br/>
 
 <div style="text-align: justify">No gráfico QQplot, para uma distribuição ser normal ou aproximadamente normal, os dados, em sua maioria, tem que estar acima da linha vermelha. Nos dados da série temporal mostram claramente que os dados <b>não</b> estão normalmente distribuídos.
@@ -281,16 +281,16 @@ Caso a série temporal não esteja normalizada, que é o caso da nossa série te
 
 <div style="text-align: justify">Como a transformação <b>log</b> é a opção mais utilizada, não seria diferente aqui, e ele também foi escolhido para os dados da série temporal, optando pelo logaritmo na base 10 por questão pessoal, somente. Agora faremos o teste de normalidade nos dados transformados com QQplot e teste estatístico de Shapiro-Wilk.</div><br/>
 
- ![Gráfico normalidade QQplot transformada](imagens/qqplot_transformada_serie_temporal.png "Gráfico normalidade QQplot série transformada")
+<p align="center"><img src="imagens/qqplot_transformada_serie_temporal.png"/></p>
 <div align="center">(Fonte: Arquivo pessoal, 2022)</div><br/>
 
 <div style="text-align: justify">Observando o gráfico QQplot após a transformação, é nítida a diferença da normalidade. Agora é necessário ver o teste estatístico de Shapiro-Wilk para confirmar, ou não, a normalidade dos dados.</div><br/>
 
-Teste de Shapiro-Wilk
-**Critério: Nível de significância de 0.05 ou 5% (mais utilizado)**
-Se p > 0.05 (distribuição normal)
-**Estatística do teste: 0.9842071533203125**
-**Valor p: 0.0004322609747759998**
+Teste de Shapiro-Wilk<br/>
+**Critério: Nível de significância de 0.05 ou 5% (mais utilizado)**<br/>
+Se p > 0.05 (distribuição normal)<br/>
+**Estatística do teste: 0.9842071533203125**<br/>
+**Valor p: 0.0004322609747759998**<br/>
 
 <div style="text-align: justify">Apesar do gráfico QQplot mostra que, após a transformação, os dados, aparentemente, estão normais. Entretanto, o teste de Shapiro-Wilk não confirma a normalidade dos dados após a transformação. O que pode ter acontecido é que alguns dados de venda estejam acima da normalidade (outliers), fazendo com que a transformação não tenha atingindo a normalidade. Creio que se os outliers fossem removidos, a distribuição ficaria normal, entretanto perderiamos dados importantes na hora de fazer análises estatísticas e modelagem dos dados para criação de modelos de previsão mais robustos, sem contar que foram utilizados outros métodos de transformação, e nenhum conseguiu fazer com que a distribuição ficasse normal. Então, nesse caso, considerando todas as variáveis desses dados, vamos considerar que os dados estão normais.
 Após atestada a normalidade dos dados da série temporal, agora é necessário verificar a estacionariedade da mesma.</div><br/>
@@ -305,17 +305,17 @@ Quando ocorrem mudanças repentinas na série temporal tem-se séries temporais 
 Existem vários testes estatísticos para determinar a estacionariedade da série temporal, como KPSS, Dickey-Fuller, Phillips-Perron, dentre outros.
 E para confirmar a estacionariedade, optou-se por utilizar o teste estatístico como o KPSS, por exemplo. Abaixo veremos os resultados do teste para a série temporal após transformação:</div><br/>
 
-Teste de estacionariedade KPSS
-H0 - Não estacionária: estatística do teste > valor crítico
-HA - Estacionária: estatística do teste < valor crítico
-**Estatística do teste: 1.3152953918238164**
-Valor p: 0.01
-Número de lags: 17
-Valores críticos:
-10% : 0.3470
-**5% : 0.4630**
-2.5% : 0.5740
-1% : 0.7390
+Teste de estacionariedade KPSS<br/>
+H0 - Não estacionária: estatística do teste > valor crítico<br/>
+HA - Estacionária: estatística do teste < valor crítico<br/>
+**Estatística do teste: 1.3152953918238164**<br/>
+Valor p: 0.01<br/>
+Número de lags: 17<br/>
+Valores críticos:<br/>
+10% : 0.3470<br/>
+**5% : 0.4630**<br/>
+2.5% : 0.5740<br/>
+1% : 0.7390<br/>
 
 Como podemos observar, a série temporal está "normalizada", mas não está estacionária. Fazendo com que seja necessário fazer uma diferenciação nos dados.
 
@@ -326,17 +326,17 @@ Pode-se fazer quantas diferenciações forem necessárias para obter a estaciona
 A diferenciação remove os sinais de tendência e sazonalidade e reduz a variância.
 Abaixo veremos o resultado da série temporal após a diferenciação dos dados:</div><br/>
 
-Teste de estacionariedade KPSS
-H0 - Não estacionária: estatística do teste > valor crítico
-HA - Estacionária: estatística do teste < valor crítico
-**Estatística do teste: 0.054780214818354**
-Valor p: 0.1
-Número de lags: 17
-Valores críticos:
-10% : 0.3470
-**5% : 0.4630**
-2.5% : 0.5740
-1% : 0.7390
+Teste de estacionariedade KPSS<br/>
+H0 - Não estacionária: estatística do teste > valor crítico<br/>
+HA - Estacionária: estatística do teste < valor crítico<br/>
+**Estatística do teste: 0.054780214818354**<br/>
+Valor p: 0.1<br/>
+Número de lags: 17<br/>
+Valores críticos:<br/>
+10% : 0.3470<br/>
+**5% : 0.4630**<br/>
+2.5% : 0.5740<br/>
+1% : 0.7390<br/>
 
 <div style="text-align: justify">Como era de se esperar, os dados da série temporal não são estacionários, já que, por pouco, também não ficaram normalizados após a transformação. Entretanto, consideraremos como sendo normalmente distribuída por causa do gráfico QQ-plot.</div><br/>
 
@@ -352,7 +352,7 @@ Alguns testes para avaliação da autocorrelação são o <b>ACF</b> e <b>PACF</
 <div style="text-align: justify">A função de autocorrelação (ACF) analisa os dados (lags) vizinhos, na sequência, seja anterior ou superior ao dado atual.
 Abaixo veremos o gráfico ACF da série temporal com 60 lags:</div><br/>
 
-![Gráfico ACF](imagens/autocorrelacao.png "Gráfico de autocorrelação com 60 lags")
+<p align="center"><img src="imagens/autocorrelacao.png" /></p>
 <div align="center">(Fonte: Arquivo pessoal, 2022)</div><br/>
 
 <div style="text-align: justify">Como podemos ver, grande parte dos lags estão dentro do intervalo de confiança (azul), algo muito positivo para a modelagem dos dados.</div><br/>
@@ -361,7 +361,7 @@ Abaixo veremos o gráfico ACF da série temporal com 60 lags:</div><br/>
 A função de autocorrelação parcial (PACF) analisa os dados (lags) de forma (aleatória).
 Abaixo veremos o gráfico PACF da série temporal com 60 lags:
 
- ![Gráfico PACF](imagens/autocorrelacao_parcial.png "Gráfico de autocorrelação parcial com 60 lags")
+<p align="center"><img src="imagens/autocorrelacao_parcial.png" /></p>
 <div align="center">(Fonte: Arquivo pessoal, 2022)</div><br/>
 
 <div style="text-align: justify">Como no gráfico de correlação, a grande maioria dos lags estão dentro do intervalo de confiança. O que também significa um ótimo sinal para o modelo.</div><br/>
@@ -393,7 +393,7 @@ Aqui vale explicar um detalhe na geração dos modelos pelo auto ARIMA. O auto A
 Após escolhido o melhor modelo para a série, fazer uma avaliação do modelo. Então é necessário verificar os resíduos do modelo ARIMA criado e avaliar a sua diferenciação, distribuição normal e suas autocorrelações, tanto o ACF quanto o PACF.
 Primeiro, veremos o gráfico dos resíduos com o gráfico dele logo abaixo.</div><br/>
 
-![Resíduos ARIMA](imagens/residuos_modelo_arima.png "Gráfico resíduos do modelo ARIMA")
+<p align="center"><img src="imagens/residuos_modelo_arima.png" /></p>
 <div align="center">(Fonte: Arquivo pessoal, 2022)</div><br/>
 
 <div style="text-align: justify">Percebe-se que os resíduos tem uma média e variância constante, o que significa que o modelo ARIMA encaixou bem com os dados e os resíduos são estacionários.
@@ -404,19 +404,19 @@ Agora, veremos o gráfico da normalidade do resíduo do modelo ARIMA abaixo.</di
 
 <div style="text-align: justify">No gráfico, percebe-se que os resíduos estão perto de ser normalmente distribuidos, com alguns pontos fora da reta. Para confirmar, basta ver o teste de Shapiro-Wilk para ter mais uma ferramenta para verificação estatística da distribuição dos dados.</div><br/>
 
-Teste de Shapiro-Wilk
-**Critério: Nível de significancia de 0.05 ou 5% (mais utilizado)**
-Se p > 0.05 (distribuição normal)
-**Estatística do teste: 0.9461087584495544**
-**Valor p: 2.1602641897544572e-10**
+Teste de Shapiro-Wilk<br/>
+**Critério: Nível de significancia de 0.05 ou 5% (mais utilizado)**<br/>
+Se p > 0.05 (distribuição normal)<br/>
+**Estatística do teste: 0.9461087584495544**<br/>
+**Valor p: 2.1602641897544572e-10**<br/>
 
 <div style="text-align: justify">Apesar do teste avaliar que os dados do resíduo do modelo ARIMA não estão distribuidos, iremos considerar o que o gráfico mostrou anteriormente.
 Agora iremos ver o ACF e PACF dos resíduos do modelo ARIMA:</div><br/>
 
-![Gráfico ACF residuos](imagens/autocorrelacao_residuos.png "Gráfico de autocorrelação dos residuos com 60 lags")
+<p align="center"><img src="imagens/autocorrelacao_residuos.png" /></p>
 <div align="center">(Fonte: Arquivo pessoal, 2022)</div><br/>
 
-![Gráfico PACF](imagens/autocorrelacao_parcial.png "Gráfico de autocorrelação parcial dos residuos com 60 lags")
+<p align="center"><img src="imagens/autocorrelacao_parcial_residuos.png" /></p>
 <div align="center">(Fonte: Arquivo pessoal, 2022)</div><br/>
 
 <div style="text-align: justify">Tanto o ACF quanto PACF mostram que a grande maioria dos lags estão dentro do intervalo de confiança, mostrando que não correlação entre eles. E mostra que o modelo ARIMA está bom para esse tipo de dados.</div><br/>
@@ -427,7 +427,7 @@ Agora iremos ver o ACF e PACF dos resíduos do modelo ARIMA:</div><br/>
 
 #### 6.1) ARIMA<br/><br/>
 
-![Gráfico série + previsão 2022](imagens/serie_temporal_previsao.png "Gráfico da série temporal mais previsão para 2022")
+<p align="center"><img src="imagens/serie_temporal_previsao.png" /></p>
 <div align="center">(Fonte: Arquivo pessoal, 2022)</div><br/>
 
 ![Gráfico previsão 2022](imagens/previsao_vendas_2022.png "Gráfico com a previsão de venda de comerciais leves para o ano de 2022.")
