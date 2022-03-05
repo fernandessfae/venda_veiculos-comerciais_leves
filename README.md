@@ -457,6 +457,21 @@ podendo classificar como estacionário, o que é um ótimo sinal.
 ![Gráfico previsão 2022](imagens/previsao_vendas_2022_arima.png "Gráfico com a previsão de venda de comerciais leves para o ano de 2022.")
 <div align="center">(Fonte: Arquivo pessoal, 2022)</div><br/>
 
+|Mês|Previsão|
+| :-----: | :-----: |
+|2022-01|29514.948573|
+|2022-02|28332.532434|
+|2022-03|28825.908879|
+|2022-04|25403.549854|
+|2022-05|25970.662541|
+|2022-06|28103.429204|
+|2022-07|30234.319222|
+|2022-08|30763.331739|
+|2022-09|31169.497074|
+|2022-10|31407.004738|
+|2022-11|30551.534070|
+|2022-12|31749.768442|
+
 #### 6.2) Holt Winters<br/><br/>
 
 <div align="center"><img src="imagens/serie_temporal_previsao_holt.png" /></div>
@@ -464,6 +479,22 @@ podendo classificar como estacionário, o que é um ótimo sinal.
 
 <div align="center"><img src="imagens/previsao_vendas_2022_holt.png" /></div>
 <div align="center">(Fonte: Arquivo pessoal, 2022)</div><br/>
+
+
+|Mês|Previsão|
+| :-----: | :-----: |
+|2022-01|32412.044410|
+|2022-02|30646.213676|
+|2022-03|35822.400243|
+|2022-04|34268.472785|
+|2022-05|36578.115410|
+|2022-06|37296.518775|
+|2022-07|39748.597617|
+|2022-08|41920.907259|
+|2022-09|39576.452632|
+|2022-10|40219.229248|
+|2022-11|38063.531715|
+|2022-12|40885.036544|
 
 ### 7) Avaliação de performance de modelos<br/><br/>
 
@@ -530,6 +561,6 @@ podendo classificar como estacionário, o que é um ótimo sinal.
 
 <div align="justify">ICAMINHÕES, 28 jun 2013. Disponível em: https://caminhoes.icarros.com.br/noticias/caminhoes/top-10:-comerciais-leves-mais-baratos-do-pais/14546.html. Acesso em: 19 jan 2022 15:52.</div><br/>
 
-<div align="justify">GOUVEIA, Rosimar. TODAMATÉRIA. Disponível em:https://www.todamateria.com.br/medidas-de-dispersao/. Acesso em: 19 jan 2022 23:59</div>
+<div align="justify">GOUVEIA, Rosimar. TODAMATÉRIA. Disponível em:https://www.todamateria.com.br/medidas-de-dispersao/. Acesso em: 19 jan 2022 23:59</div><br/>
 
-<div align="justify">CÉSAR TERALBI GOMES, Pedro. OPSERVICES. Disponível em:https://www.opservices.com.br/holt-winters/. Acesso em: 4 mar 2022 17:51</div>
+<div align="justify">CÉSAR TERALBI GOMES, Pedro. OPSERVICES. Disponível em:https://www.opservices.com.br/holt-winters/. Acesso em: 4 mar 2022 17:51</div><br/>
