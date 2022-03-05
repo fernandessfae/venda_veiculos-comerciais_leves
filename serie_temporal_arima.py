@@ -229,16 +229,20 @@ if dados_url.ok:
              color='orange', marker='*')
     plt.title('Previsão venda mensal de comerciais leves (2022)',
               fontdict={'fontsize': 16, 'fontweight':'bold'})
+    plt.grid(axis='y')
     plt.show();
     
-    # Avaliação do modelo ARIMA
+    # Avaliação de performance do modelo ARIMA
     comerciais_leves = comerciais_leves.reset_index()
-    desempenho_modelo = pd.concat([comerciais_leves['valor'].iloc[372:384],
+    modelo_arima = pd.concat([comerciais_leves['valor'].iloc[372:384],
                                    previsao_escala_arima.iloc[0:12]],
                                    axis=1).reset_index(drop=True)
-    mae_arima = mean_absolute_error(desempenho_modelo['valor'].iloc[12:24],
-                                    desempenho_modelo['Previsão_ARIMA'].iloc[0:12])
-    mse_arima = mean_squared_error(desempenho_modelo['valor'].iloc[12:24],
-                                    desempenho_modelo['Previsão_ARIMA'].iloc[0:12])    
+    mae_arima = mean_absolute_error(modelo_arima['valor'].iloc[12:24],
+                                    modelo_arima['Previsão_ARIMA'].iloc[0:12])
+    rmse_arima = mean_squared_error(modelo_arima['valor'].iloc[12:24],
+                                    modelo_arima['Previsão_ARIMA'].iloc[0:12]) ** 1/2
+    
+    print(round(mae_arima, 2))
+    print(round(rmse_arima, 2))    
 else:
     print('Infelizmente não foi possível pegar os dados do site.')
