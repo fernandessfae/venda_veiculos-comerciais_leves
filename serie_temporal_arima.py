@@ -216,14 +216,14 @@ if dados_url.ok:
     pacf(residuos_auto(), 60)
     
     # Previsão de receita para o ano de 2022
-    previsao_auto = resultado_auto.predict(n_periods=24)
-    previsao_escala_arima = pd.DataFrame(10 ** previsao_auto,
-                                         columns=['Previsão_ARIMA'])
+    previsao_auto: pd.DataFrame = resultado_auto.predict(n_periods=24)
+    previsao_escala_arima: pd.DataFrame = pd.DataFrame(10 ** previsao_auto,
+                                                       columns=['Previsão_ARIMA'])
     pd.concat([comerciais_leves_st, previsao_escala_arima]).plot()
     
     # Gráfico com a previsão para o ano de 2022
-    meses = ['JAN', 'FEV', 'MAR', 'ABR', 'MAI', 'JUN',
-             'JUL', 'AGO', 'SET', 'OUT', 'NOV', 'DEZ']
+    meses: list = ['JAN', 'FEV', 'MAR', 'ABR', 'MAI', 'JUN',
+                   'JUL', 'AGO', 'SET', 'OUT', 'NOV', 'DEZ']
     plt.figure(figsize=(15, 5))
     plt.plot(meses, previsao_escala_arima.iloc[12:24],
              color='orange', marker='*')
@@ -233,13 +233,13 @@ if dados_url.ok:
     plt.show();
     
     # Avaliação de performance do modelo ARIMA
-    comerciais_leves = comerciais_leves.reset_index()
-    modelo_arima = pd.concat([comerciais_leves['valor'].iloc[372:384],
-                                   previsao_escala_arima.iloc[0:12]],
-                                   axis=1).reset_index(drop=True)
-    mae_arima = mean_absolute_error(modelo_arima['valor'].iloc[12:24],
+    comerciais_leves: pd.DataFrame = comerciais_leves.reset_index()
+    modelo_arima: pd.DataFrame = pd.concat([comerciais_leves['valor'].iloc[372:384],
+                                           previsao_escala_arima.iloc[0:12]],
+                                           axis=1).reset_index(drop=True)
+    mae_arima: float = mean_absolute_error(modelo_arima['valor'].iloc[12:24],
                                     modelo_arima['Previsão_ARIMA'].iloc[0:12])
-    rmse_arima = mean_squared_error(modelo_arima['valor'].iloc[12:24],
+    rmse_arima: float = mean_squared_error(modelo_arima['valor'].iloc[12:24],
                                     modelo_arima['Previsão_ARIMA'].iloc[0:12]) ** 1/2
     
     print(round(mae_arima, 2))
