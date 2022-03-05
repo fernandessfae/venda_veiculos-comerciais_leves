@@ -40,7 +40,7 @@ if dados_url.ok:
     print(round(modelo_holt.bic, 3))
     
     # Previsão dos proximos 24 meses
-    previsao_holt = modelo_holt.forecast(24)
+    previsao_holt: pd.Series = modelo_holt.forecast(24)
     
     # Gráficos com a série temporal + previsão (24 meses)
     plt.figure(figsize = (15, 5))
@@ -64,9 +64,9 @@ if dados_url.ok:
     plt.show();
     
     # Avaliação de performance do modelo Holt Winters
-    mae_holt = mean_absolute_error(comerciais_leves['valor'].iloc[372:384],
+    mae_holt: float = mean_absolute_error(comerciais_leves['valor'].iloc[372:384],
                                     previsao_holt.iloc[0:12])
-    rmse_holt = mean_squared_error(comerciais_leves['valor'].iloc[372:384],
+    rmse_holt: float = mean_squared_error(comerciais_leves['valor'].iloc[372:384],
                                     previsao_holt.iloc[0:12]) ** 1/2 
     
     print(round(mae_holt, 2))
