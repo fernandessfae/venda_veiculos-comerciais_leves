@@ -33,8 +33,13 @@
   5. Modelos de série temporal
         - 5.1. ARIMA (AutoRegression Integrated Moving Average)
           - 5.1.1. Criação e comparação entre modelos ARIMA
+        - 5.2. Holt Winters
+          - 5.2.1 Criação do modelo Holt Winters
   6. Previsão série temporal
         - 6.1. ARIMA
+        - 6.2. Holt Winters
+  7. Performance dos modelos
+        - 7.1. ARIMA
 - Referências Bibliográficas
 
 ## Introdução
@@ -425,17 +430,99 @@ Agora iremos ver o ACF e PACF dos resíduos do modelo ARIMA:</div><br/>
 
 <div align="justify">Tanto o ACF quanto PACF mostram que a grande maioria dos lags estão dentro do intervalo de confiança, mostrando que não correlação entre eles. E mostra que o modelo ARIMA está bom para esse tipo de dados.</div><br/>
 
+#### 5.2) Holt Winters
+
+<div align="justify"><blockquote>O algoritmo Holt-Winters é uma das técnicas de previsão mais populares para séries temporais. Apesar de existir há décadas, ele ainda é muito utilizado em aplicativos voltados para fins de detecção de anomalias e, especialmente, na previsão de tempo.
+Esse modelo é uma extensão do modelo de Holt (suavização exponencial dupla), desenvolvido por Winter.<br/> A sua capacidade de previsão é simples, mas muito poderosa. Ele pode lidar com muitos padrões sazonais complicados, simplesmente encontrando o valor central e adicionando os efeitos de inclinação e sazonalidade.</blockquote></div>
+
+#### 5.2.1) Criação do modelo Holt Winters
+
+<div align="justify">Diferentemente do ARIMA, a criação do modelo Holt Winters requer poucas etapas, mostrando ser um modelo simples, porém muito poderoso, bastando saber a tendência, sazonalidade, informações que já foram vistas na decomposição da série temporal (item 3) e o tipo de transformação dos dados para esse modelo, que optou-se pelo box cox (item 4.1.2), que vem por padrão nos parâmetros de criação do modelo, e não haverá diferença já que os valores são inteiros e positivos.<br/>
+Após a criação do modelo, vamos ver como ficou  o gráfico dos resíduos do modelo holt.</div><br/> 
+<div align="center"><img src="imagens/residuos_modelo_holt.png" /></div>
+<div align="center">(Fonte: Arquivo pessoal, 2022)</div><br/>
+
+Como podemos ver os resíduos apresentam uma certa média constante e pouco variância,
+podendo classificar como estacionário, o que é um ótimo sinal.
+
 ### 6) Previsão série temporal<br/><br/>
 
 <div align="justify">Após toda preparação dos dados, modelagem e testes estatísticos, vem a parte que mais interessa, que é a tentativa de prever algo no futuro. Nesse caso é fazer a previsão de futuras vendas de comerciais leves para os meses do ano de 2022.</div><br/>
 
 #### 6.1) ARIMA<br/><br/>
 
-<p align="center"><img src="imagens/serie_temporal_previsao.png" /></p>
+<p align="center"><img src="imagens/serie_temporal_previsao_arima.png" /></p>
 <div align="center">(Fonte: Arquivo pessoal, 2022)</div><br/>
 
-![Gráfico previsão 2022](imagens/previsao_vendas_2022.png "Gráfico com a previsão de venda de comerciais leves para o ano de 2022.")
+![Gráfico previsão 2022](imagens/previsao_vendas_2022_arima.png "Gráfico com a previsão de venda de comerciais leves para o ano de 2022.")
 <div align="center">(Fonte: Arquivo pessoal, 2022)</div><br/>
+
+#### 6.2) Holt Winters<br/><br/>
+
+<div align="center"><img src="imagens/serie_temporal_previsao_holt.png" /></div>
+<div align="center">(Fonte: Arquivo pessoal, 2022)</div><br/>
+
+<div align="center"><img src="imagens/previsao_vendas_2022_holt.png" /></div>
+<div align="center">(Fonte: Arquivo pessoal, 2022)</div><br/>
+
+### 7) Avaliação de performance de modelos<br/><br/>
+
+<div align="justify">Logo após a de todas as etapas de criação do modelo até a futura previsão, é necessário avaliar a performance desses modelos. Abaixo veremos algumas dessas métricas para avaliar a performance do modelo:</div><br/>
+
+<div align="justify">MAE (Mean Absolute Error) → O erro médio absoluto (MAE) é o somatório da diferença entre o valor original menos o valor previsto, em módulo, dividido pelo número total de termos. Abaixo veremos a fórmula:</div><br/>
+<div align="center"><img src="imagens/mae.png"/></div>
+<div align="center">(Fonte: Google, 2021)</div><br/>
+
+<div align="justify">RMSE (Root Mean Squared Error) → A raiz do erro médio quadrado (RMSE) é a raiz do somatório da diferença entre o valor original menos o valor previsto, elevado ao quadrado, dividido pelo número total de termos. Abaixo veremos a fórmula:</div><br/>
+
+<div align="center"><img src="imagens/rmse.png"/></div>
+<div align="center">(Fonte: Google, 2021)</div><br/>
+
+<div align="justify">Vale destacar que quanto menor o erro, melhor o modelo, seja para o MAE quanto RMSE. Agora que sabemos as principais métricas de avaliação de modelo, vamos ver o resultado dela nos principais modelos abaixo.</div><br/>
+
+#### 7.1) ARIMA<br/><br/>
+
+|Mês|Venda real|Previsão|
+| :-----: | :------: | :------: |
+|2021-01|31753|30958.297605|
+|2021-02|30133|29187.646743|
+|2021-03|35169|29832.958061|
+|2021-04|36444|25609.860645|
+|2021-05|32729|26328.451158|
+|2021-06|36269|29001.528222|
+|2021-07|38821|31719.617550|
+|2021-08|38700|32420.722501|
+|2021-09|33274|32966.889715|
+|2021-10|30761|33297.392491|
+|2021-11|35049|32222.728306|
+|2021-12|37409|33788.423950|
+
+|Métrica|Erro|
+| :-----: | :-----: |
+|MAE|4.520,77|
+|RMSE|14.943.470,01|    
+
+#### 7.2) Holt Winters<br/><br/>
+
+|Mês|Venda real|Previsão|
+| :-----: | :------: | :------: |
+|2021-01|31753|31347.600254|
+|2021-02|30133|29643.080527|
+|2021-03|35169|34638.996226|
+|2021-04|36444|33139.359569|
+|2021-05|32729|35368.257807|
+|2021-06|36269|36061.483800|
+|2021-07|38821|38427.414152|
+|2021-08|38700|40523.141724|
+|2021-09|33274|38261.327563|
+|2021-10|30761|38881.474711|
+|2021-11|35049|36801.584246|
+|2021-12|37409|39523.819260|
+
+|Métrica|Erro|
+| :-----: | :-----: |
+|MAE|2.230,72|
+|RMSE|5.018.874,19|   
 
 ## Referências Bibliográficas
 
@@ -444,3 +531,5 @@ Agora iremos ver o ACF e PACF dos resíduos do modelo ARIMA:</div><br/>
 <div align="justify">ICAMINHÕES, 28 jun 2013. Disponível em: https://caminhoes.icarros.com.br/noticias/caminhoes/top-10:-comerciais-leves-mais-baratos-do-pais/14546.html. Acesso em: 19 jan 2022 15:52.</div><br/>
 
 <div align="justify">GOUVEIA, Rosimar. TODAMATÉRIA. Disponível em:https://www.todamateria.com.br/medidas-de-dispersao/. Acesso em: 19 jan 2022 23:59</div>
+
+<div align="justify">CÉSAR TERALBI GOMES, Pedro. OPSERVICES. Disponível em:https://www.opservices.com.br/holt-winters/. Acesso em: 4 mar 2022 17:51</div>
