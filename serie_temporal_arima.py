@@ -240,7 +240,7 @@ if dados_url.ok:
     mae_arima: float = mean_absolute_error(modelo_arima['valor'].iloc[12:24],
                                     modelo_arima['Previsão_ARIMA'].iloc[0:12])
     rmse_arima: float = mean_squared_error(modelo_arima['valor'].iloc[12:24],
-                                    modelo_arima['Previsão_ARIMA'].iloc[0:12]) ** 1/2
+                                    modelo_arima['Previsão_ARIMA'].iloc[0:12]) ** (1/2)
     
     print(round(mae_arima, 2))
     print(round(rmse_arima, 2))    
