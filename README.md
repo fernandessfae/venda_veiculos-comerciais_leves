@@ -531,7 +531,7 @@ podendo classificar como estacionário, o que é um ótimo sinal.
 |Métrica|Erro|
 | :-----: | :-----: |
 |MAE|4.520,77|
-|RMSE|14.943.470,01|    
+|RMSE|5.466,89|    
 
 #### 7.2) Holt Winters<br/><br/>
 
@@ -553,7 +553,7 @@ podendo classificar como estacionário, o que é um ótimo sinal.
 |Métrica|Erro|
 | :-----: | :-----: |
 |MAE|2.230,72|
-|RMSE|5.018.874,19|   
+|RMSE|3.168,24|   
 
 ## Referências Bibliográficas
 
