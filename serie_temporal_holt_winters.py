@@ -67,7 +67,7 @@ if dados_url.ok:
     mae_holt: float = mean_absolute_error(comerciais_leves['valor'].iloc[372:384],
                                     previsao_holt.iloc[0:12])
     rmse_holt: float = mean_squared_error(comerciais_leves['valor'].iloc[372:384],
-                                    previsao_holt.iloc[0:12]) ** 1/2 
+                                    previsao_holt.iloc[0:12]) ** (1/2) 
     
     print(round(mae_holt, 2))
     print(round(rmse_holt, 2))
